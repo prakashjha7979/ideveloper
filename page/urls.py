@@ -15,13 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-
-admin.site.site_header = "ideveloper Admin"
-admin.site.site_title = "ideveloper Admin Panel"
-admin.site.index_title = "Welcome to ideveloper Admin Panel"
+from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('home.urls')),
-    path('page/', include('page.urls')),
+    # API to post a comment
+    path('postComment', views.postComment, name="postComment"),
+
+    path('', views.pagehome, name='pagehome'),
+    path('<str:slug>', views.pagepost, name='pagepost'),
 ]

@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from page.models import Post
-# Create your views here.
+# HTML pages.
 def home(request):
     return render(request,'home/home.html')
     # return HttpResponse('this is home')
@@ -46,7 +46,8 @@ def search(request):
         messages.warning(request, "No search results found. Please refine your query")
     params = {'allPosts':allPosts, 'query':query} 
     return render(request, 'home/search.html', params)
-    
+
+#authenticate APIs 
 def handlesignup(request):
     if request.method == 'POST':
         #get the post parametres

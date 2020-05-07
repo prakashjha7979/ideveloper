@@ -29,13 +29,13 @@ def postComment(request):
         user = request.user
         postSno = request.POST.get("postSno")
         post = Post.objects.get(sno=postSno)
-        parentsno = request.POST.get("parentsno")
-        if parentsno == "":
+        parentSno = request.POST.get("parentSno")
+        if parentSno == "":
             comment = PageComment(comment=comment, user=user,post=post)
             comment.save() 
             messages.success(request, "Your comment has been posted successfully")
         else:
-            parent = PageComment.objects.get(sno=parentsno)
+            parent = PageComment.objects.get(sno=parentSno)
             comment = PageComment(comment=comment, user=user,post=post,parent=parent)
             comment.save() 
             messages.success(request, "Your reply has been posted successfully")

@@ -18,9 +18,12 @@ from django.urls import path,include
 from . import views
 
 urlpatterns = [
+    path('', views.pagehome, name='pagehome'),
+    
     # API to post a comment
     path('postComment', views.postComment, name="postComment"),
 
-    path('', views.pagehome, name='pagehome'),
     path('<str:slug>', views.pagepost, name='pagepost'),
+    
+
 ]
